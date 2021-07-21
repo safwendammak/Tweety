@@ -1,6 +1,6 @@
 <x-app>
     <header class="mb-6 relative">
-        <div class="relative"><img src="/images/default-profile-banner.jpg" alt="" class="mb-2">
+        <div class="relative"><img src="{{ $user->banner }}" alt="" class="mb-2">
             <img
                 src="{{ $user->avatar }}"
                 alt=""
@@ -26,8 +26,7 @@
             </div>
         </div>
         <p class="text-sm">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam corporis debitis enim error explicabo,
-            fugit hic illo in libero quaerat quod rem repellendus sapiente soluta sunt tempore ut vero voluptate?
+            {{$user->description}}
         </p>
 
 

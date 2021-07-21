@@ -40,6 +40,11 @@ class User extends Authenticatable
         $image = $value ?: 'avatars/default-avatar.png';
         return Storage::url($image);
     }
+    public function getBannerAttribute($value)
+    {
+        $image = $value ?: 'banners/default-profile-banner.jpg';
+        return Storage::url($image);
+    }
 
     public function timeline()
     {
