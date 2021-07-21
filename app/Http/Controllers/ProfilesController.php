@@ -37,7 +37,7 @@ class ProfilesController extends Controller
             $attributes['avatar'] = request('avatar')->store('avatars');
         }
         if (request('banner')) {
-            $attributes['banner'] = request('avatar')->store('banners');
+            $attributes['banner'] = request('banner')->store('banners');
         }
         $user->update($attributes);
         return redirect($user->path());
