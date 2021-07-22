@@ -17,10 +17,16 @@
             </a>
         </h5>
 
+        <div>
 
-        <p class="text-sm mb-3">
-            {{ $tweet->body }}
-        </p>
+            <p class="text-sm mb-3">
+                {{ $tweet->body }}
+            </p>
+            @if(isset($tweet->image))
+                <img src="{{$tweet->image}}" alt="tweet image" style="height: auto;width: 100%;max-height: 300pc;">
+            @endif
+        </div>
+
         <x-like-buttons :tweet="$tweet"/>
 
     </div>

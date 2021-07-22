@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Tweet;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TweetsController extends Controller
 {
@@ -13,17 +15,20 @@ class TweetsController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $attributes = request()->validate([
             'body' => 'required|max:255'
         ]);
+        $attributes['user_id'] = auth()->id();
+        if (request('file')) {
+           // $image = request('file');
 
-        Tweet::create([
-            'user_id' => auth()->id(),
-            'body' => $attributes['body']
-        ]);
-
-        return redirect()->route('home');
+            //$imageName = time() . '.' . $image->extension();
+           // $image->move(public_path('images'), $imageName);
+            $attributes['image'] = request('file')->store('tweets');
+        }
+        Tweet::create($attributes);
+        return ['urllink' => route('home')];
     }
 }

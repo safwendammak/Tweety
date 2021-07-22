@@ -15,7 +15,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "matthewbdaly/laravel-azure-storage": "^1.6"
+        "matthewbdaly/laravel-azure-storage": "^1.6",
+      "ext-http": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",
