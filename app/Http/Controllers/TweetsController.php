@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Tweet;
-use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TweetsController extends Controller
@@ -31,5 +30,13 @@ class TweetsController extends Controller
         Alert::toast('Tweet Added', 'success');
         redirect()->route('home');
         return $redirect;
+    }
+
+    public function destroy(Tweet $tweet)
+    {
+        $this->authorize('destroy', $tweet);
+        $tweet->delete();
+        Alert::toast('Tweet Deleted', 'success');
+        return back();
     }
 }
