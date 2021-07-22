@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "matthewbdaly/laravel-azure-storage": "^1.6",
-      "ext-http": "*"
+        "realrashid/sweet-alert": "^4.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.7",

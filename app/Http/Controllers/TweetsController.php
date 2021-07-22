@@ -4,31 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Tweet;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TweetsController extends Controller
 {
     public function index()
     {
+
         return view('tweets.index', [
             'tweets' => auth()->user()->timeline()
         ]);
     }
 
-    public function store(Request $request)
+    public function store()
     {
         $attributes = request()->validate([
             'body' => 'required|max:255'
         ]);
         $attributes['user_id'] = auth()->id();
+        $redirect = redirect()->route('home');
         if (request('file')) {
-           // $image = request('file');
-
-            //$imageName = time() . '.' . $image->extension();
-           // $image->move(public_path('images'), $imageName);
             $attributes['image'] = request('file')->store('tweets');
+            $redirect = ['urllink' => route('home')];
         }
         Tweet::create($attributes);
-        return ['urllink' => route('home')];
+        Alert::toast('Tweet Added', 'success');
+        redirect()->route('home');
+        return $redirect;
     }
 }

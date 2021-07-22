@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfilesController extends Controller
 {
@@ -40,6 +41,7 @@ class ProfilesController extends Controller
             $attributes['banner'] = request('banner')->store('banners');
         }
         $user->update($attributes);
+        Alert::toast('Information Updated', 'success');
         return redirect($user->path());
     }
 }
