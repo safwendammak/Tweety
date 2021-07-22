@@ -4,12 +4,14 @@
         @csrf
 
         <textarea
+            id="text-area"
             name="body"
             class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none" rows="4"
             placeholder="What's up doc?"
             required
             autofocus
         ></textarea>
+        <div id="characters-left" class="text-right"></div>
         <div id="preview-template" class="dropzone-previews text-center"></div>
         <div class="dz-message flex justify-center items-center" data-dz-message>
             <span class="mr-4">Drag and Drop Image</span>

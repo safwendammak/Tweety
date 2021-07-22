@@ -68,6 +68,22 @@
             window.location = response.urllink;
         }
     };
+    $( document ).ready(function() {
+        var textarea = document.getElementById('text-area');
+
+        window.onload = textareaLengthCheck();
+
+        function textareaLengthCheck() {
+            var textArea = textarea.value.length;
+            var charactersLeft = 200 - textArea;
+            var count = document.getElementById('characters-left');
+            count.innerHTML = "Characters left: " + charactersLeft;
+        }
+
+        textarea.addEventListener('keyup', textareaLengthCheck, false);
+        textarea.addEventListener('keydown', textareaLengthCheck, false);
+    });
+
 </script>
 @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
