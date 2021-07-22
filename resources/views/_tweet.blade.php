@@ -83,8 +83,5 @@
         </div>
 
         <x-like-buttons :tweet="$tweet"/>
-        <p>
-            delete
-        </p>
     </div>
 </div>
