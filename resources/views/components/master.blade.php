@@ -55,17 +55,21 @@
         autoProcessQueue: false,
         previewElement: "#preview-template",
         previewsContainer: "#preview-template",
-        init: function (){
+        init: function () {
             var myDropzone = this;
-            document.getElementById("submit-tweet").addEventListener('click',function (e){
-                e.preventDefault();
-                myDropzone.processQueue();
+            document.getElementById("submit-tweet").addEventListener('click', function (e) {
+                if (myDropzone.files.length > 0) {
+                    e.preventDefault();
+                    myDropzone.processQueue();
+                }
             })
         },
-        success: function(file, response){
+        success: function (file, response) {
             window.location = response.urllink;
         }
     };
 </script>
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+
 </body>
 </html>
