@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\TweetCreated;
 use App\Tweet;
+use Illuminate\Support\Facades\Notification;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class TweetsController extends Controller
@@ -26,9 +28,10 @@ class TweetsController extends Controller
             $attributes['image'] = request('file')->store('tweets');
             $redirect = ['urllink' => route('home')];
         }
-        Tweet::create($attributes);
+        $tweet = Tweet::create($attributes);
         Alert::toast('Tweet Added', 'success');
         redirect()->route('home');
+        Notification::send(current_user()->followers, new TweetCreated($tweet->fresh(), current_user()));
         return $redirect;
     }
 
