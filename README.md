@@ -10,6 +10,10 @@ Tweety is a twitter clone application built with Laravel following the "Laravel 
 - Delete own tweets.
 - Get notifications on follow,Like/Dislike.
 - Edit profile (banner, description, avatar).
+## Demo
+- Application hosted on [https://rocky-earth-96946.herokuapp.com/](https://rocky-earth-96946.herokuapp.com/)
+- Database hosted on [Azure MySQL](https://azure.microsoft.com/en-us/services/mysql/)
+- Storage Hosted on [Azure Storage](https://azure.microsoft.com/fr-fr/services/storage/disks/)
 ## Installation
 - Run `composer install`.
 - Edit .env with database information.
