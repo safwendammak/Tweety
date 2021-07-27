@@ -83,8 +83,8 @@
                                                     <p class="font-medium text-sm">{{substr($notification['data']['tweet']['body'],0,20)}}</p>
                                                     <span
                                                         class="text-sm text-blue font-semibold">{{\Carbon\Carbon::parse($notification['data']['tweet']['created_at'])->diffForHumans()}}</span>
-                                                @else
-                                                    <p class="font-medium text-sm">Started Following you !</p>
+                                                @elseif($notification->type ==='App\Notifications\LikeNotification')
+                                                    <p class="font-medium text-sm">{{$notification['data']['like']}} your tweet {{substr($notification['data']['tweet']['body'],0,20)}}</p>
                                                     <span
                                                         class="text-sm text-blue font-semibold">{{\Carbon\Carbon::parse($notification['created_at'])->diffForHumans()}}</span>
                                                 @endif
